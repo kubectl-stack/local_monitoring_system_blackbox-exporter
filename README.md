@@ -1,13 +1,19 @@
+# Prometheus + Blackbox Exporter Monitoring + grafana
+
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 helm install prometheus-blackbox prometheus-community/prometheus-blackbox-exporter --namespace mon
+
 k8s kubectl port-forward service/prometheus-blackbox-prometheus-blackbox-exporter 9115:9115 --namespace mon &
+---
+# prometheus github
 curl -LO https://github.com/prometheus/prometheus/releases/download/v2.52.0/prometheus-2.52.0.linux-amd64.tar.gz
 tar -xzf prometheus-2.52.0.linux-amd64.tar.gz
 mv prometheus-2.52.0.linux-amd64 prometheus
 cd prometheus
+---
 nano prometheus.yml
-
+```bash
 global:
   scrape_interval: 15s
 
@@ -35,9 +41,11 @@ scrape_configs:
         target_label: instance
       - target_label: __address__
         replacement: localhost:9115  # Adjust if blackbox runs elsewhere
+```
 
 ./prometheus --config.file=prometheus.yml &
 
+---
 
 wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
 echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
