@@ -1,11 +1,14 @@
 # Prometheus + Blackbox Exporter Monitoring + grafana
 
 ```helm repo add prometheus-community https://prometheus-community.github.io/helm-charts```
+
 ```helm repo update```
+
 ```helm install prometheus-blackbox prometheus-community/prometheus-blackbox-exporter --namespace mon```
 
 ```k8s kubectl port-forward service/prometheus-blackbox-prometheus-blackbox-exporter 9115:9115 --namespace mon &```
 ---
+
 # prometheus github
 ```bash
 curl -LO https://github.com/prometheus/prometheus/releases/download/v2.52.0/prometheus-2.52.0.linux-amd64.tar.gz
