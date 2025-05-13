@@ -1,12 +1,15 @@
-# Prometheus + Blackbox Exporter Monitoring + grafana
+# Prometheus + (Blackbox Exporter Monitoring + helm )+ grafana
+
+-install helm
+```
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+```
+
 ```bash
-```helm repo add prometheus-community https://prometheus-community.github.io/helm-charts```
-
-```helm repo update```
-
-```helm install prometheus-blackbox prometheus-community/prometheus-blackbox-exporter --namespace mon```
-
-```k8s kubectl port-forward service/prometheus-blackbox-prometheus-blackbox-exporter 9115:9115 --namespace mon &```
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+helm install prometheus-blackbox prometheus-community/prometheus-blackbox-exporter --namespace mon
+k8s kubectl port-forward service/prometheus-blackbox-prometheus-blackbox-exporter 9115:9115 --namespace mon &
 ```
 ---
 
