@@ -1,5 +1,5 @@
 # Prometheus + Blackbox Exporter Monitoring + grafana
-
+```bash
 ```helm repo add prometheus-community https://prometheus-community.github.io/helm-charts```
 
 ```helm repo update```
@@ -7,6 +7,7 @@
 ```helm install prometheus-blackbox prometheus-community/prometheus-blackbox-exporter --namespace mon```
 
 ```k8s kubectl port-forward service/prometheus-blackbox-prometheus-blackbox-exporter 9115:9115 --namespace mon &```
+```
 ---
 
 # prometheus github
@@ -52,9 +53,13 @@ scrape_configs:
 
 ---
 
+## grafana install using apt repo
+
+```bash
 wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
 echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
 sudo apt update
 sudo apt install grafana -y
 sudo systemctl enable --now grafana-server
 sudo systemctl start --now grafana-server
+```
