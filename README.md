@@ -1,6 +1,6 @@
 # Prometheus + Blackbox Exporter Monitoring + grafana
 
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+- helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 helm install prometheus-blackbox prometheus-community/prometheus-blackbox-exporter --namespace mon
 
